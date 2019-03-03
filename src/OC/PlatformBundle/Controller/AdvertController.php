@@ -9,6 +9,7 @@
 namespace OC\PlatformBundle\Controller;
 
 use OC\PlatformBundle\Entity\Advert;
+use OC\PlatformBundle\Entity\Image;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -72,8 +73,17 @@ class AdvertController extends Controller
 	 */
 	public function viewAction($id)
 	{
+
+		$repository = $this->getDoctrine()->getManager()->getRepository('OCPlatformBundle:Advert');
+
+		$advert = $repository->find($id);
+
+		if (null === $advert) {
+			throw new NotFoundHttpException("Announce with " . $id . "doen't exist.");
+		}
+
 		return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
-			'id' => $id
+			'advert' => $advert
 		));
 	}
 
@@ -94,6 +104,14 @@ class AdvertController extends Controller
 		$advert->setTitle('Looking for Symfony Developer');
 		$advert->setAuthor('Recruiter');
 		$advert->setContent('We are looking for a fresh Developer on Symfony');
+
+		//Create Image Entity
+		$image = new Image();
+		$image->setUrl("http://sdz-upload.s3.amazonaws.com/prod/upload/job-de-reve.jpg");
+		$image->setAlt("amazing job");
+
+		//Links Image to Advert
+		$advert->setImage($image);
 
 		//Get the EntityManager
 		$em = $this->getDoctrine()->getManager();

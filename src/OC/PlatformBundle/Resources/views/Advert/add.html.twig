@@ -1,0 +1,20 @@
+{% extends "OCPlatformBundle::layout.html.twig" %}
+
+{% block body %}
+    <a href="{{ path("oc_platform_home") }}">Home</a>
+
+    <h2>Ajouter une annonce</h2>
+
+    {{ include("OCPlatformBundle:Advert:form.html.twig") }}
+    <div>
+        {% for message in app.session.flashbag.get('info') %}
+            <p>Message Flash: {{ message }}</p>
+        {% endfor %}
+    </div>
+
+    <p>
+        Attention : cette annonce sera ajoutée directement
+        sur la page d'accueil après validation du formulaire.
+    </p>
+
+{% endblock %}

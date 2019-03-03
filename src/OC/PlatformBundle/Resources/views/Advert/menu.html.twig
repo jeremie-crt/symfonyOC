@@ -1,0 +1,10 @@
+{# Generate URL with the path Twig function, and provide a view with the id from the table given by the controller #}
+<ul class="nav nav-pills nav-stacked">
+    {% for advert in listAdverts %}
+        <li>
+            <a href="{{ path('oc_platform_view', {'id': advert.id}) }}">
+                {{ advert.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

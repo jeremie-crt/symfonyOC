@@ -72,6 +72,13 @@ class Advert
 
 
 	/**
+	 * @ORM\OneToMany(targetEntity="OC\PlatformBundle\Entity\Application", mappedBy="advert")
+	 * 'S' for several datas
+	 */
+	private $applications;
+
+
+	/**
 	 * Advert constructor.
 	 * @param $date
 	 */
@@ -79,6 +86,7 @@ class Advert
 	{
 		$this->date = new \DateTime();
 		$this->categories = new ArrayCollection();
+		$this->applications = new ArrayCollection();
 	}
 
 	/**
@@ -266,5 +274,45 @@ class Advert
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add application.
+     *
+     * @param \OC\PlatformBundle\Entity\Application $application
+     *
+     * @return Advert
+     */
+    public function addApplication(\OC\PlatformBundle\Entity\Application $application)
+    {
+        $this->applications[] = $application;
+
+        $application->setAdvert($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove application.
+     *
+     * @param \OC\PlatformBundle\Entity\Application $application
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeApplication(\OC\PlatformBundle\Entity\Application $application)
+    {
+        return $this->applications->removeElement($application);
+	    // Et si notre relation était facultative (nullable=true, ce qui n'est pas notre cas ici attention) :
+	    // $application->setAdvert(null);
+    }
+
+    /**
+     * Get applications.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getApplications()
+    {
+        return $this->applications;
     }
 }

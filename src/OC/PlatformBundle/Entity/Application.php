@@ -1,118 +1,162 @@
 <?php
-// src/OC/PlatformBundle/Entity/Application.php
 
 namespace OC\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Application
+ *
  * @ORM\Table(name="oc_application")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="OC\PlatformBundle\Repository\ApplicationRepository")
  */
 class Application
 {
-  /**
-   * @ORM\Column(name="id", type="integer")
-   * @ORM\Id
-   * @ORM\GeneratedValue(strategy="AUTO")
-   */
-  private $id;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
-  /**
-   * @ORM\Column(name="author", type="string", length=255)
-   */
-  private $author;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255)
+     */
+    private $author;
 
-  /**
-   * @ORM\Column(name="content", type="text")
-   */
-  private $content;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="content", type="string", length=255)
+     */
+    private $content;
 
-  /**
-   * @ORM\Column(name="date", type="datetime")
-   */
-  private $date;
+    /**
+     * @var datetime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
 
-  /**
-   * @ORM\ManyToOne(targetEntity="OC\PlatformBundle\Entity\Advert", inversedBy="applications")
-   * @ORM\JoinColumn(nullable=false)
-   */
-  private $advert;
+	/**
+	 * @ORM\ManyToOne(targetEntity="OC\PlatformBundle\Entity\Advert")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $advert;
 
-  public function __construct()
-  {
-    $this->date = new \Datetime();
-  }
 
-  /**
-   * @return int
-   */
-  public function getId()
-  {
-    return $this->id;
-  }
+    public function __construct()
+    {
+    	$this->date = new \DateTime();
+    }
 
-  /**
-   * @param string $author
-   */
-  public function setAuthor($author)
-  {
-    $this->author = $author;
-  }
+	/**
+     * Get id.
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-  /**
-   * @return string
-   */
-  public function getAuthor()
-  {
-    return $this->author;
-  }
+    /**
+     * Set author.
+     *
+     * @param string $author
+     *
+     * @return Application
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
 
-  /**
-   * @param string $content
-   */
-  public function setContent($content)
-  {
-    $this->content = $content;
-  }
+        return $this;
+    }
 
-  /**
-   * @return string
-   */
-  public function getContent()
-  {
-    return $this->content;
-  }
+    /**
+     * Get author.
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
 
-  /**
-   * @param \Datetime $date
-   */
-  public function setDate(\Datetime $date)
-  {
-    $this->date = $date;
-  }
+    /**
+     * Set content.
+     *
+     * @param string $content
+     *
+     * @return Application
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
 
-  /**
-   * @return \Datetime
-   */
-  public function getDate()
-  {
-    return $this->date;
-  }
+        return $this;
+    }
 
-  /**
-   * @param Advert $advert
-   */
-  public function setAdvert(Advert $advert)
-  {
-    $this->advert = $advert;
-  }
+    /**
+     * Get content.
+     *
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
 
-  /**
-   * @return Advert
-   */
-  public function getAdvert()
-  {
-    return $this->advert;
-  }
+    /**
+     * Set date.
+     *
+     * @param datetime $date
+     *
+     * @return Application
+     */
+    public function setDate(\DateTime $date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date.
+     *
+     * @return datetime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set advert.
+     *
+     * @param \OC\PlatformBundle\Entity\Advert $advert
+     *
+     * @return Application
+     */
+    public function setAdvert(\OC\PlatformBundle\Entity\Advert $advert)
+    {
+        $this->advert = $advert;
+
+        return $this;
+    }
+
+    /**
+     * Get advert.
+     *
+     * @return \OC\PlatformBundle\Entity\Advert
+     */
+    public function getAdvert()
+    {
+        return $this->advert;
+    }
 }

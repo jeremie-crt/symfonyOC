@@ -9,6 +9,7 @@
 namespace OC\PlatformBundle\Controller;
 
 use OC\PlatformBundle\Entity\Advert;
+use OC\PlatformBundle\Entity\Application;
 use OC\PlatformBundle\Entity\Image;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -73,17 +74,22 @@ class AdvertController extends Controller
 	 */
 	public function viewAction($id)
 	{
+		$em = $this->getDoctrine()->getManager();
 
-		$repository = $this->getDoctrine()->getManager()->getRepository('OCPlatformBundle:Advert');
-
-		$advert = $repository->find($id);
+		$advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
 
 		if (null === $advert) {
 			throw new NotFoundHttpException("Announce with " . $id . "doen't exist.");
 		}
+		// On récupère la liste des candidatures de cette annonce
+		$listApplications = $em
+			->getRepository('OCPlatformBundle:Application')
+			->findBy(array('advert' => $advert))
+		;
 
 		return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
-			'advert' => $advert
+			'advert'           => $advert,
+			'listApplications' => $listApplications
 		));
 	}
 
@@ -109,14 +115,29 @@ class AdvertController extends Controller
 		$image = new Image();
 		$image->setUrl("http://sdz-upload.s3.amazonaws.com/prod/upload/job-de-reve.jpg");
 		$image->setAlt("amazing job");
-
 		//Links Image to Advert
 		$advert->setImage($image);
+
+		// Création d'une première candidature
+		$application1 = new Application();
+		$application1->setAuthor('Marine');
+		$application1->setContent("J'ai toutes les qualités requises.");
+
+		// Création d'une deuxième candidature par exemple
+		$application2 = new Application();
+		$application2->setAuthor('Pierre');
+		$application2->setContent("Je suis très motivé.");
+
+		// On lie les candidatures à l'annonce
+		$application1->setAdvert($advert);
+		$application2->setAdvert($advert);
 
 		//Get the EntityManager
 		$em = $this->getDoctrine()->getManager();
 		//Persist Entity: Says that it goes with Doctrine now
 		$em->persist($advert);
+		$em->persist($application1);
+		$em->persist($application2);
 
 		//Flush everything persisted: executes all requests
 		$em->flush();
@@ -146,6 +167,21 @@ class AdvertController extends Controller
 
 		return $this->render('OCPlatformBundle:Advert:edit.html.twig');
 
+	}
+
+	public function editImageAction($advertId)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		// On récupère l'annonce
+		$advert = $em->getRepository('OCPlatformBundle:Advert')->find($advertId);
+
+		// On modifie l'URL de l'image par exemple
+		$advert->getImage()->setUrl('test.png');
+
+		$em->flush();
+
+		return new Response('OK');
 	}
 
 	/**

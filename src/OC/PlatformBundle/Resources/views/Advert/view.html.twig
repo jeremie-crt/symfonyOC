@@ -3,15 +3,39 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Affichage de l'annonce {{ advert.id }}</title>
+        <title>Advert for:  {{ advert.title }}</title>
     </head>
 
     <body>
     <a href="{{ path("oc_platform_home") }}">Home</a>
-        <h1>Hello Annonce n°{{ advert.id }} !</h1>
+        <h1>{{ advert.title }}</h1>
 
-        {% if advert.image is not null %}
-            <img src="{{ advert.image.url }}" alt="{{ advert.image.alt }}">
+        <div>
+            {% if advert.image is not null %}
+                <img src="{{ advert.image.url }}" alt="{{ advert.image.alt }}">
+            {% endif %}
+        </div>
+
+        <h2>Description</h2>
+        <p>{{ advert.content }}</p>
+
+        <h3>Applications for the advert:</h3>
+        <ul>
+            {% for application in listApplications %}
+                <li>{{ application.author }}: {{ application.content }}</li>
+            {% endfor %}
+
+        </ul>
+
+        {% if not advert.categories.empty %}
+            <p>
+                Published on categories:
+                {% for category in advert.categories %}
+                    {{ category.name }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </p>
         {% endif %}
+
+        <p>posted by {{ advert.author }}</p>
     </body>
 </html>

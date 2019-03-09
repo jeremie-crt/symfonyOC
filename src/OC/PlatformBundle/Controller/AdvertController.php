@@ -86,7 +86,7 @@ class AdvertController extends Controller
 			->getRepository('OCPlatformBundle:Application')
 			->findBy(array('advert' => $advert))
 		;
-
+		var_dump($listApplications);
 		return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
 			'advert'           => $advert,
 			'listApplications' => $listApplications
@@ -159,16 +159,31 @@ class AdvertController extends Controller
 	 */
 	public function editAction($id, Request $request)
 	{
-		if ($request->isMethod('POST')) {
-			$request->getSession()->getFlashBag()->add('notice', 'Announce has been modified');
+		$em = $this->getDoctrine()->getManager();
 
-			return $this->redirectToRoute('oc_platform_view', array('id' => 5));
+		// On récupère l'annonce $id
+		$advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
+
+		if (null === $advert) {
+			throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
 		}
+		//Get ALL categories saved
+		$listCategories = $em->getRepository('OCPlatformBundle:Category')->findAll();
+		//Loop to link advert with one category
+		foreach ($listCategories as $category) {
+			$advert->addCategory($category);
+		}
+
+		$em->flush();
 
 		return $this->render('OCPlatformBundle:Advert:edit.html.twig');
 
 	}
 
+	/**
+	 * @param $advertId
+	 * @return Response
+	 */
 	public function editImageAction($advertId)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -190,6 +205,22 @@ class AdvertController extends Controller
 	 */
 	public function deleteAction($id)
 	{
+
+		$em = $this->getDoctrine()->getManager();
+
+		// On récupère l'annonce $id
+		$advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
+
+		if (null === $advert) {
+			throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+		}
+
+		// On boucle sur les catégories de l'annonce pour les supprimer
+		foreach ($advert->getCategories() as $category) {
+			$advert->removeCategory($category);
+		}
+		$em->flush();
+
 		return $this->render('OCPlatformBundle:Advert:delete.html.twig');
 	}
 }

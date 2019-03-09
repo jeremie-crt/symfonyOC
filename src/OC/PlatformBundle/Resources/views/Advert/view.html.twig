@@ -19,6 +19,18 @@
         <h2>Description</h2>
         <p>{{ advert.content }}</p>
 
+
+        {% if listAdvertSkills|length > 0 %}
+            <div>
+                Following skills are required:
+                <ul>
+                    {% for advertSkill in listAdvertSkills %}
+                        <li>{{ advertSkill.skill.name }}: level asked: {{ advertSkill.level }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
         <h3>Applications for the advert:</h3>
         <ul>
             {% for application in listApplications %}

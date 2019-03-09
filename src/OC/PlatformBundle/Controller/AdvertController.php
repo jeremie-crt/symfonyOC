@@ -9,6 +9,7 @@
 namespace OC\PlatformBundle\Controller;
 
 use OC\PlatformBundle\Entity\Advert;
+use OC\PlatformBundle\Entity\AdvertSkill;
 use OC\PlatformBundle\Entity\Application;
 use OC\PlatformBundle\Entity\Image;
 use Symfony\Component\HttpFoundation\Request;
@@ -81,15 +82,16 @@ class AdvertController extends Controller
 		if (null === $advert) {
 			throw new NotFoundHttpException("Announce with " . $id . "doen't exist.");
 		}
-		// On récupère la liste des candidatures de cette annonce
+
 		$listApplications = $em
-			->getRepository('OCPlatformBundle:Application')
-			->findBy(array('advert' => $advert))
+			->getRepository('OCPlatformBundle:Application')->findBy(array('advert' => $advert))
 		;
-		var_dump($listApplications);
+
+		$listAdvertSkills = $em->getRepository('OCPlatformBundle:AdvertSkill')->findBy(array('advert' => $advert));
 		return $this->render('OCPlatformBundle:Advert:view.html.twig', array(
 			'advert'           => $advert,
-			'listApplications' => $listApplications
+			'listApplications' => $listApplications,
+			'listAdvertSkills' => $listAdvertSkills
 		));
 	}
 
@@ -138,6 +140,25 @@ class AdvertController extends Controller
 		$em->persist($advert);
 		$em->persist($application1);
 		$em->persist($application2);
+
+		$listSkills = $em->getRepository('OCPlatformBundle:Skill')->findAll();
+		foreach ($listSkills as $skill) {
+			$advertSkill = new AdvertSkill();
+
+			// On la lie à l'annonce, qui est ici toujours la même
+			$advertSkill->setAdvert($advert);
+			// On la lie à la compétence, qui change ici dans la boucle foreach
+			$advertSkill->setSkill($skill);
+
+			$advertSkill->setLevel("Expert");
+
+			$em->persist($advertSkill);
+		}
+
+
+		// Doctrine ne connait pas encore l'entité $advert. Si vous n'avez pas défini la relation AdvertSkill
+		// avec un cascade persist alors on doit persister $advert
+		$em->persist($advert);
 
 		//Flush everything persisted: executes all requests
 		$em->flush();

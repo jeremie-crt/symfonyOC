@@ -4,6 +4,7 @@ namespace OC\PlatformBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Advert
@@ -95,6 +96,13 @@ class Advert
 	 * @ORM\Column(name="nb_applications", type="integer")
 	 */
 	private $nbApplications = 0;
+
+	/**
+	 * @Gedmo\Slug(fields={"title"})
+	 * @ORM\Column(name="slug", type="string", length=255, unique=true)
+	 */
+	private $slug;
+
 
 	/**
 	 * Advert constructor.
@@ -427,4 +435,28 @@ class Advert
 	{
 		$this->nbApplications--;
 	}
+
+    /**
+     * Set slug.
+     *
+     * @param string $slug
+     *
+     * @return Advert
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug.
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }

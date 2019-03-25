@@ -111,6 +111,7 @@ class AdvertController extends Controller
 		$advert = new Advert();
 		$advert->setTitle('Looking for Symfony Developer');
 		$advert->setAuthor('Recruiter');
+		$advert->setEmail('recruiter@gmail.com');
 		$advert->setContent('We are looking for a fresh Developer on Symfony');
 
 		//Create Image Entity
@@ -136,7 +137,7 @@ class AdvertController extends Controller
 
 		//Get the EntityManager
 		$em = $this->getDoctrine()->getManager();
-		//Persist Entity: Says that it goes with Doctrine now
+		//Persist Entity: Tells that it goes with Doctrine now
 		$em->persist($advert);
 		$em->persist($application1);
 		$em->persist($application2);

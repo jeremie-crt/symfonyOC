@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="oc_advert")
  * @ORM\Entity(repositoryClass="OC\PlatformBundle\Repository\AdvertRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Advert
 {
@@ -43,6 +44,13 @@ class Advert
      */
     private $author;
 
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="email", type="string", length=255)
+	 */
+    private $email;
+    
     /**
      * @var string
      *
@@ -73,10 +81,20 @@ class Advert
 
 	/**
 	 * @ORM\OneToMany(targetEntity="OC\PlatformBundle\Entity\Application", mappedBy="advert")
-	 * 'S' for several datas
+	 * 'S' for several datas of Type ArrayCollection
 	 */
 	private $applications;
 
+	/**
+	 * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+	 */
+	private $updateAt;
+
+	/**
+	 * @var int
+	 * @ORM\Column(name="nb_applications", type="integer")
+	 */
+	private $nbApplications = 0;
 
 	/**
 	 * Advert constructor.
@@ -315,4 +333,74 @@ class Advert
     {
         return $this->applications;
     }
+
+
+    /**
+     * Set updateAt.
+     *
+     * @param \DateTime|null $updateAt
+     *
+     * @return Advert
+     */
+    public function setUpdateAt($updateAt = null)
+    {
+        $this->updateAt = $updateAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updateAt.
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdateAt()
+    {
+        return $this->updateAt;
+    }
+
+    public function updateDate()
+    {
+    	$this->setUpdateAt(new \DateTime());
+    }
+
+    /**
+     * Set nbApplications.
+     *
+     * @param int $nbApplications
+     *
+     * @return Advert
+     */
+    public function setNbApplications($nbApplications)
+    {
+        $this->nbApplications = $nbApplications;
+
+        return $this;
+    }
+
+    /**
+     * Get nbApplications.
+     *
+     * @return int
+     */
+    public function getNbApplications()
+    {
+        return $this->nbApplications;
+    }
+
+	/**
+	 * Counter of Applications
+	 */
+    public function increaseApplication()
+    {
+    	$this->nbApplications++;
+    }
+
+	/**
+	 * Counter of Applications
+	 */
+	public function decreaseApplication()
+	{
+		$this->nbApplications--;
+	}
 }

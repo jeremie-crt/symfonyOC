@@ -182,4 +182,19 @@ class AdvertController extends Controller
 
 		return $this->render('OCPlatformBundle:Advert:menu.html.twig', array('listAdverts' => $listAdverts));
 	}
+
+	/**
+	 * @param $days
+	 */
+	public function purgeAction($days, Request $request)
+	{
+		//Call the service
+		$purger = $this->container->get('oc_platform.purger.advert');
+		$purger->checkAdvertForPurge($days);
+
+		$request->getSession()->getFlashBag()->add('info', 'Adverts have been purged.');
+
+		return $this->redirectToRoute('oc_platform_home');
+
+	}
 }

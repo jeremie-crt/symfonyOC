@@ -6,7 +6,11 @@
 {% endblock %}
 
 {% block ocplatform_body %}
-
+    <div>
+        {% for message in app.session.flashbag.get('info') %}
+            <p>Message Flash: {{ message }}</p>
+        {% endfor %}
+    </div>
     <h2>Liste des annonces</h2>
 
     <ul>

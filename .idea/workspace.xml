@@ -4,7 +4,9 @@
     <list default="true" id="b52ef946-890c-46c1-95bf-9eef8f176f3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OC/PlatformBundle/Controller/AdvertController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/OC/PlatformBundle/Controller/AdvertController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OC/PlatformBundle/Repository/AdvertRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/OC/PlatformBundle/Repository/AdvertRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OC/PlatformBundle/Purge/Purger.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/OC/PlatformBundle/Purge/Purger.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/services.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,55 +19,7 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Controller/AdvertController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
-              <folding>
-                <element signature="e#6#91#0#PHP" expanded="true" />
-                <element signature="e#134#170#0#PHP" expanded="true" />
-                <element signature="e#6246#6578#0#PHP" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="27" column="71" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/routing.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="18" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Repository/AdvertRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-              <folding>
-                <element signature="e#166#929#0#PHP" />
-                <element signature="e#932#1339#0#PHP" />
-                <element signature="e#1342#1883#0#PHP" />
-                <element signature="e#1886#2211#0#PHP" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -100,7 +54,6 @@
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Default/index.html.twig" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/seeyou.html.twig" />
-        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/config/config_dev.yml" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/form.html.twig" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/menu.html.twig" />
@@ -122,19 +75,22 @@
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/view.html.twig" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Repository/ApplicationRepository.php" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Entity/Application.php" />
-        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/services.yml" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/DoctrineListener/ApplicationCreationListener.php" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Email/ApplicationMailer.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/OC/CoreBundle/Resources/views/layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Entity/Advert.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/DataFixtures/ORM/LoadAdvert.php" />
+        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/services.yml" />
+        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Entity/Advert.php" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Repository/AdvertRepository.php" />
-        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Controller/AdvertController.php" />
         <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Purge/Purger.php" />
+        <option value="$PROJECT_DIR$/src/OC/PlatformBundle/Controller/AdvertController.php" />
       </list>
     </option>
   </component>
@@ -192,10 +148,11 @@
       <path value="$PROJECT_DIR$/vendor/behat/transliterator" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="2" />
-    <option name="width" value="1102" />
-    <option name="height" value="1005" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -213,17 +170,6 @@
             <path>
               <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
               <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -231,39 +177,6 @@
               <item name="Symfony" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="OC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="OC" type="462c0819:PsiDirectoryNode" />
-              <item name="CoreBundle" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="OC" type="462c0819:PsiDirectoryNode" />
-              <item name="CoreBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="OC" type="462c0819:PsiDirectoryNode" />
-              <item name="CoreBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="OC" type="462c0819:PsiDirectoryNode" />
-              <item name="CoreBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
@@ -271,6 +184,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="OC" type="462c0819:PsiDirectoryNode" />
               <item name="PlatformBundle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="OC" type="462c0819:PsiDirectoryNode" />
+              <item name="PlatformBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Antispam" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
@@ -279,6 +200,22 @@
               <item name="OC" type="462c0819:PsiDirectoryNode" />
               <item name="PlatformBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="OC" type="462c0819:PsiDirectoryNode" />
+              <item name="PlatformBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="DoctrineListener" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="OC" type="462c0819:PsiDirectoryNode" />
+              <item name="PlatformBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Email" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Symfony" type="b2602c69:ProjectViewProjectNode" />
@@ -400,7 +337,8 @@
       <workItem from="1552899746332" duration="684000" />
       <workItem from="1552999845458" duration="612000" />
       <workItem from="1553504436417" duration="16974000" />
-      <workItem from="1553604383340" duration="7151000" />
+      <workItem from="1553604383340" duration="8254000" />
+      <workItem from="1553675737549" duration="12346000" />
     </task>
     <task id="LOCAL-00001" summary="relation step">
       <created>1552140854846</created>
@@ -427,7 +365,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103808000" />
+    <option name="totallyTimeSpent" value="117257000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -439,10 +377,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="2" width="881" height="804" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28867236" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24630873" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" weight="0.20743406" />
       <window_info anchor="bottom" id="Messages" order="0" />
@@ -456,7 +393,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.7203514" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32796487" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.4669739" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.44363105" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32932332" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -464,7 +401,7 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.47114095" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2910663" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="Structure" order="2" weight="0.20743406" />
       <window_info anchor="bottom" id="Messages" order="0" />
@@ -478,7 +415,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.7203514" />
       <window_info anchor="bottom" id="TODO" order="10" weight="0.32796487" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.4669739" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.44363105" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" weight="0.32932332" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -535,39 +472,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="ENTITY RELATION &#10;STEP ONE" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/OC/CoreBundle/Resources/views/Default/contact.html.twig">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/CoreBundle/Resources/views/Default/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Repository/ImageRepository.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/DataFixtures/ORM/LoadSkill.php" />
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Entity/Image.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/OC/CoreBundle/Controller/CoreController.php" />
     <entry file="file://$PROJECT_DIR$/src/OC/CoreBundle/OCCoreBundle.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OC/CoreBundle/Resources/views/Core/index.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Antispam/OCAntispam.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -582,34 +491,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/DataFixtures/ORM/LoadSkills.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/view.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/DataFixtures/ORM/LoadCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding>
-            <element signature="e#54#104#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Repository/ApplicationRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -627,16 +512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-357">
           <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/DoctrineListener/ApplicationCreationListener.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#141#183#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -686,13 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Email/ApplicationMailer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -700,13 +568,6 @@
           <folding>
             <element signature="e#7#47#0#PHP" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Entity/AdvertSkill.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="9" column="35" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -736,13 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Entity/Application.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2941">
-          <caret line="168" column="47" selection-start-line="168" selection-start-column="28" selection-end-line="168" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -784,16 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Entity/Advert.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7287">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="29" />
-          <folding>
-            <element signature="e#44#92#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/doctrine/orm/lib/Doctrine/ORM/Tools/Pagination/Paginator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3625">
@@ -801,49 +645,153 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/services.yml">
+    <entry file="file://$PROJECT_DIR$/vendor/doctrine/data-fixtures/lib/Doctrine/Common/DataFixtures/FixtureInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="21" column="61" selection-start-line="21" selection-start-column="61" selection-end-line="21" selection-end-column="61" />
+        <state relative-caret-position="340">
+          <caret line="18" column="20" selection-start-line="18" selection-end-line="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Repository/AdvertRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/DataFixtures/ORM/LoadAdvert.php" />
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/DataFixtures/ORM/LoadSkills.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
           <folding>
-            <element signature="e#166#929#0#PHP" />
-            <element signature="e#932#1339#0#PHP" />
-            <element signature="e#1342#1883#0#PHP" />
-            <element signature="e#1886#2211#0#PHP" />
+            <element signature="e#54#104#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/DataFixtures/ORM/LoadCategory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="403">
+          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+          <folding>
+            <element signature="e#54#104#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Antispam/OCAntispam.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Email/ApplicationMailer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/DoctrineListener/ApplicationCreationListener.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding>
+            <element signature="e#140#182#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Repository/ApplicationRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="52" lean-forward="true" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Entity/AdvertSkill.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Entity/Application.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1711">
+          <caret line="49" column="19" selection-start-line="49" selection-start-column="12" selection-end-line="49" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="12" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="18" selection-end-column="22" />
+        <state relative-caret-position="-198">
+          <caret column="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Controller/AdvertController.php">
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Resources/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+        <state relative-caret-position="425">
+          <caret line="25" column="51" lean-forward="true" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/doctrine/orm/lib/Doctrine/ORM/EntityManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="606" column="20" selection-start-line="606" selection-start-column="20" selection-end-line="606" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Entity/Advert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="91" column="21" selection-start-line="91" selection-start-column="12" selection-end-line="91" selection-end-column="21" />
           <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-            <element signature="e#134#170#0#PHP" expanded="true" />
-            <element signature="e#6246#6578#0#PHP" />
+            <element signature="e#44#92#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Repository/AdvertRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+          <folding>
+            <element signature="e#48#82#0#PHP" expanded="true" />
+            <element signature="e#211#974#0#PHP" />
+            <element signature="e#977#1384#0#PHP" />
+            <element signature="e#1387#1928#0#PHP" />
+            <element signature="e#1931#2256#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Purge/Purger.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Resources/views/Advert/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="27" column="71" selection-start-line="27" selection-start-column="71" selection-end-line="27" selection-end-column="71" />
+        <state relative-caret-position="261">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/OC/PlatformBundle/Controller/AdvertController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="193" selection-start-line="193" selection-end-line="193" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+            <element signature="e#134#170#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -15,6 +15,12 @@ use OC\PlatformBundle\Entity\Image;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class AdvertController extends Controller
 {
@@ -79,18 +85,50 @@ class AdvertController extends Controller
 	 */
 	public function addAction(Request $request)
 	{
+		//Instancie l'objet pour le Form
+		$advert = new Advert();
 
-		$em = $this->getDoctrine()->getManager();
+		/*$advert->setDate(new \DateTime());
+		$advert = $this->getDoctrine()
+			->getManager()
+			->getRepository('OCPlatformBundle:Advert')
+			->find($id)
+		;*/
 
-		// On ne sait toujours pas gérer le formulaire, patience cela vient dans la prochaine partie !
+		//Crée le formbuilder grâce au service form factory
+		$formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $advert)
+			->add('date', DateType::class)
+			->add('title', TextType::class)
+			->add('email', TextType::class)
+			->add('content', TextareaType::class)
+			->add('author', TextType::class)
+			->add('published', CheckboxType::class, array('required' => false))
+			->add('save', SubmitType::class)
+			->getForm()
+		;
 
-		if ($request->isMethod('POST')) {
-			$request->getSession()->getFlashBag()->add('notice', 'Advert has been saved.');
+		if($request->isMethod('POST')) {
+			//Fait le lien entre Variables POST et le FORM
+			$formBuilder->handleRequest($request);
 
-			return $this->redirectToRoute('oc_platform_view', array('id' => $advert->getId()));
+			if($formBuilder->isValid()) {
+
+				$em = $this->getDoctrine()->getManager();
+				$em->persist($advert);
+				$em->flush();
+
+				$request->getSession()->getFlashBag()->add('notice', 'Advert has been correctly saved.');
+
+				return $this->redirectToRoute('oc_platform_view', array(
+					'id' => $advert->getId()
+				));
+			}
 		}
 
-		return $this->render('OCPlatformBundle:Advert:add.html.twig');
+		//Donne la méthode createView du form à la vue pour qu'elle affiche le form toute seule
+		return $this->render('OCPlatformBundle:Advert:add.html.twig', array(
+			'form' => $formBuilder->createView(),
+		));
 	}
 
 	/**

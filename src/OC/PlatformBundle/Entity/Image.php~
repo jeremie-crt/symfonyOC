@@ -36,6 +36,8 @@ class Image
     private $alt;
 
 
+    private $file;
+
     /**
      * Get id.
      *

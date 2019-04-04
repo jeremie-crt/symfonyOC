@@ -6,6 +6,7 @@
     <h2>Ajouter une annonce</h2>
 
     {{ include("OCPlatformBundle:Advert:form.html.twig") }}
+
     <div>
         {% for message in app.session.flashbag.get('info') %}
             <p>Message Flash: {{ message }}</p>

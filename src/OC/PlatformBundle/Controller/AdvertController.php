@@ -12,6 +12,8 @@ use OC\PlatformBundle\Entity\Advert;
 use OC\PlatformBundle\Entity\AdvertSkill;
 use OC\PlatformBundle\Entity\Application;
 use OC\PlatformBundle\Entity\Image;
+use OC\PlatformBundle\Form\AdvertEditType;
+use OC\PlatformBundle\Form\AdvertType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -87,45 +89,23 @@ class AdvertController extends Controller
 	{
 		//Instancie l'objet pour le Form
 		$advert = new Advert();
+		$formBuilder = $this->get('form.factory')->create(AdvertType::class, $advert);
+		//Raccourcie avec le CTL
+		//$form = $this->createForm(AdvertType::class, $advert)
 
-		/*$advert->setDate(new \DateTime());
-		$advert = $this->getDoctrine()
-			->getManager()
-			->getRepository('OCPlatformBundle:Advert')
-			->find($id)
-		;*/
+		if($request->isMethod('POST') && $formBuilder->handleRequest($request)->isValid()) {
 
-		//Crée le formbuilder grâce au service form factory
-		$formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $advert)
-			->add('date', DateType::class)
-			->add('title', TextType::class)
-			->add('email', TextType::class)
-			->add('content', TextareaType::class)
-			->add('author', TextType::class)
-			->add('published', CheckboxType::class, array('required' => false))
-			->add('save', SubmitType::class)
-			->getForm()
-		;
+		$em = $this->getDoctrine()->getManager();
+		$em->persist($advert);
+		$em->flush();
 
-		if($request->isMethod('POST')) {
-			//Fait le lien entre Variables POST et le FORM
-			$formBuilder->handleRequest($request);
+		$request->getSession()->getFlashBag()->add('notice', 'Advert has been correctly saved.');
 
-			if($formBuilder->isValid()) {
+		return $this->redirectToRoute('oc_platform_view', array(
+			'id' => $advert->getId()
+		));
+	}
 
-				$em = $this->getDoctrine()->getManager();
-				$em->persist($advert);
-				$em->flush();
-
-				$request->getSession()->getFlashBag()->add('notice', 'Advert has been correctly saved.');
-
-				return $this->redirectToRoute('oc_platform_view', array(
-					'id' => $advert->getId()
-				));
-			}
-		}
-
-		//Donne la méthode createView du form à la vue pour qu'elle affiche le form toute seule
 		return $this->render('OCPlatformBundle:Advert:add.html.twig', array(
 			'form' => $formBuilder->createView(),
 		));
@@ -138,24 +118,29 @@ class AdvertController extends Controller
 	 */
 	public function editAction($id, Request $request)
 	{
-		$em = $this->getDoctrine()->getManager();
+		$advert = $this->getDoctrine()->getManager()->getRepository('OCPlatformBundle:Advert')->find($id);
 
-		$advert = $em->getRepository('OCPlatformBundle:Advert')->find($id);
+		$formBuilder = $this->get('form.factory')->create(AdvertEditType::class, $advert);
 
 		if (null === $advert) {
-			throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+			throw new NotFoundHttpException("Advert with this ".$id." does not exist.");
 		}
 
-		// Ici encore, il faudra mettre la gestion du formulaire
+		if($request->isMethod('POST') && $formBuilder->handleRequest($request)->isValid()) {
 
-		if ($request->isMethod('POST')) {
+			$em = $this->getDoctrine()->getManager();
+			$em->flush();
+
 			$request->getSession()->getFlashBag()->add('notice', 'Advert has been edited.');
 
-			return $this->redirectToRoute('oc_platform_view', array('id' => $advert->getId()));
+			return $this->redirectToRoute('oc_platform_view', array(
+				'id' => $advert->getId()
+			));
 		}
 
 		return $this->render('OCPlatformBundle:Advert:edit.html.twig', array(
-			'advert' => $advert
+			'advert' => $advert,
+			'form'   => $formBuilder->createView()
 		));
 	}
 
@@ -182,7 +167,7 @@ class AdvertController extends Controller
 	 * @param $id
 	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	public function deleteAction($id)
+	public function deleteAction($id, Request $request)
 	{
 
 		$em = $this->getDoctrine()->getManager();
@@ -194,13 +179,20 @@ class AdvertController extends Controller
 			throw new NotFoundHttpException("L'annonce d'id ".$id." does not exist.");
 		}
 
-		// On boucle sur les catégories de l'annonce pour les supprimer
-		foreach ($advert->getCategories() as $category) {
-			$advert->removeCategory($category);
-		}
-		$em->flush();
+		$form = $this->get('form.factory')->create();
+		if ($request->isMethod('POST') && $form->handleRequest($request)->isValid() ) {
+			$em->remove($advert);
+			$em->flush();
 
-		return $this->render('OCPlatformBundle:Advert:delete.html.twig');
+			$request->getSession()->getFlashBag()->add('info', "L'annonce a bien été supprimée.");
+
+			return $this->redirectToRoute('oc_platform_home');
+		}
+
+		return $this->render('OCPlatformBundle:Advert:delete.html.twig', array(
+			'advert' => $advert,
+			'form'   => $form->createView()
+		));
 	}
 
 	/**

@@ -1,5 +1,19 @@
 {% extends "OCPlatformBundle::layout.html.twig" %}
 
-{% block body %}
-    <h2>Edition Page</h2>
+{% block title %}
+    Edit advert - {{ parent() }}
+{% endblock %}
+
+{% block ocplatform_body %}
+
+    <h2>Edition</h2>
+
+    {{ include("OCPlatformBundle:Advert:form.html.twig") }}
+    <p>
+        <a href="{{ path('oc_platform_view', {'id': advert.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Go back to previous advert
+        </a>
+    </p>
+
 {% endblock %}

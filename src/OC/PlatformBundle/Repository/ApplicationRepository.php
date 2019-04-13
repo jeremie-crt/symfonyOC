@@ -25,4 +25,9 @@ class ApplicationRepository extends EntityRepository
 			->getResult()
 			;
 	}
+
+	public function isFlood($ip, $time)
+	{
+
+	}
 }

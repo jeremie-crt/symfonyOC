@@ -2,23 +2,44 @@
 # https://symfony.com/doc/current/security.html
 security:
 
-    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
-    providers:
-        in_memory:
-            memory: ~
+    #Encode les mots de passes de l'application (users)
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
 
+    #Définit les différents ROLE de l'app. hiérarchie des rôles
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    #Il est le fournisseurs de users. les firewalls s'adressent aux providers pour récupérer les users et les identifier
+    providers:
+        #fournisseur pour faire du développement, pour tester la couche sécurité sans avoir besoin d'une quelconque base de données derrière
+        in_memory:
+            memory:
+                users:
+                    user: { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+    #le fournisseur d'utilisateurs pour ce pare-feu
+    provider: in_memory
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        #Nom du pare-feu (aléatoire)
         main:
-            anonymous: ~
-            # activate different ways to authenticate
+            #masque d'URL. Cela signifie que toutes les URL commençant par « / » sont protégées
+            pattern: ^/
+            anonymous: true
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path: logout
+                target: login
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+    access_control:
+    #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
 
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~

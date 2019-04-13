@@ -19,6 +19,7 @@ class AppKernel extends Kernel
 	        //Custom Bundles Start Here:,
             new OC\PlatformBundle\OCPlatformBundle(),
             new OC\CoreBundle\OCCoreBundle(),
+            new OC\UserBundle\OCUserBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

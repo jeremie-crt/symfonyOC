@@ -5,6 +5,9 @@ namespace OC\PlatformBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use OC\PlatformBundle\Validator\Antiflood;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Advert
@@ -26,42 +29,41 @@ class Advert
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="date", type="datetime")
+     * @Assert\DateTime()
      */
     private $date;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\Length(min=10)
      */
     private $title;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="author", type="string", length=255)
+     * @Assert\Length(min=3)
      */
     private $author;
 
 	/**
 	 * @var string
-	 *
-	 * @ORM\Column(name="email", type="string", length=255)
+	 *@ORM\Column(name="email", type="string", length=255)
 	 */
     private $email;
     
     /**
      * @var string
-     *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank()
+     * @Antiflood()
      */
     private $content;
 
 	/**
 	 * @var bool
-	 *
 	 * @ORM\Column(name="published", type="boolean")
 	 */
     private $published = true;
@@ -69,6 +71,7 @@ class Advert
 	/**
 	 * @var
 	 * @ORM\OneToOne(targetEntity="OC\PlatformBundle\Entity\Image", cascade={"persist", "remove"})
+	 * @Assert\Valid()
 	 */
     private $image;
 
@@ -78,7 +81,6 @@ class Advert
 	 * @ORM\JoinTable(name="oc_advert_category"))
 	 */
     private $categories;
-
 
 	/**
 	 * @ORM\OneToMany(targetEntity="OC\PlatformBundle\Entity\Application", mappedBy="advert")
@@ -458,5 +460,22 @@ class Advert
     public function getSlug()
     {
         return $this->slug;
+    }
+
+	/**
+	 * @param ExecutionContextInterface $context
+	 * @Assert\Callback()
+	 */
+    public function isContentValid(ExecutionContextInterface $context)
+    {
+    	$forbiddenWords = array('démotivation', 'abandon');
+
+    	if (preg_match('#' . implode('|', $forbiddenWords) . '#', $this->getContent() )) {
+    		$context
+			    ->buildViolation('Content is not valid due to restricted word language.')
+			    ->atPath('content')
+			    ->addViolation()
+			    ;
+	    }
     }
 }

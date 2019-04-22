@@ -1,5 +1,3 @@
-{# app/Resources/views/layout.html.twig #}
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,18 +22,32 @@
             <a href="{{ path('oc_core_contact') }}" class="nav-link active">CONTACT</a>
         </li>
     </ul>
+    <div class="right">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            Connected as {{ app.user.username }}
+            -
+            <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+        {% else %}
+            <a href="{{ path('fos_user_security_login') }}">Connection</a>
+        {% endif %}
+    </div>
 </div>
+
+
+
 <div class="container">
     <div class="row">
         <div id="menu" class="col-md-3">
-            <h3>Les annonces</h3>
+            <h3>All adverts</h3>
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="{{ path('oc_platform_home') }}">Accueil</a></li>
-                <li><a href="{{ path('oc_platform_add') }}">Ajouter une annonce</a></li>
+                <li><a href="{{ path('oc_platform_home') }}">Home</a></li>ower time
+                <li><a href="{{ path('oc_platform_add') }}">Add a new advert</a></li>
             </ul>
 
-            <h4>Dernières annonces</h4>
+            <h4>Latest adverts created</h4>
+
             {{ render(controller("OCPlatformBundle:Advert:menu", {'limit': 3})) }}
+
         </div>
         <div id="content" class="col-md-9">
             {% block body %}
@@ -51,7 +63,7 @@
 
     <footer>
         <p>The sky's the limit © {{ 'now'|date('Y') }} and beyond.</p>
-        <p>Developer doing the job: {#{ developer }#}.</p>
+        <p>Developer doing the job: {{ developer }}.</p>
     </footer>
 </div>
 

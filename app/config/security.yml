@@ -4,25 +4,21 @@ security:
 
     #Encode les mots de passes de l'application (users)
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        OC\UserBundle\Entity\User: sha512
 
     #Définit les différents ROLE de l'app. hiérarchie des rôles
     role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
-        ROLE_SUPER_ADMIN: [ ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+        #Admin hérité de Auteur - Moderateur
+        ROLE_ADMIN: [ ROLE_AUTHOR, ROLE_MODERATOR, ROLE_USER ]
+        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     #Il est le fournisseurs de users. les firewalls s'adressent aux providers pour récupérer les users et les identifier
     providers:
-        #fournisseur pour faire du développement, pour tester la couche sécurité sans avoir besoin d'une quelconque base de données derrière
-        in_memory:
-            memory:
-                users:
-                    user: { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        #Nom du provider (arbitraire)  bien utiliser le même dans la config ParFeu
+        fos_userbundle:
+            id: fos_user.user_provider.username
 
-    #le fournisseur d'utilisateurs pour ce pare-feu
-    provider: in_memory
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -32,14 +28,18 @@ security:
         main:
             #masque d'URL. Cela signifie que toutes les URL commençant par « / » sont protégées
             pattern: ^/
+            #user_checker: fos_user.user_checker
             anonymous: true
+            provider: fos_userbundle
             form_login:
-                login_path: login
-                check_path: login_check
+              login_path: fos_user_security_login
+              check_path: fos_user_security_check
             logout:
-                path: logout
-                target: login
+              path:    fos_user_security_logout
+              target:  /platform
+            remember_me:
+                secret: %secret%
 
     access_control:
-    #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/admin, roles: ROLE_ADMIN }
 

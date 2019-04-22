@@ -7,10 +7,10 @@
 {% block ocplatform_body %}
     <div>
         {% for message in app.session.flashbag.get('info') %}
-            <p>Message Flash: {{ message }}</p>
+            <p>Flash message: {{ message }}</p>
         {% endfor %}
     </div>
-    <h2>Liste des annonces</h2>
+    <h2>List of adverts saved</h2>
 
     <ul>
         {% for advert in listAdverts %}
@@ -22,7 +22,7 @@
                 le {{ advert.date|date('d/m/Y') }}
             </li>
         {% else %}
-            <li>Pas (encore !) d'annonces</li>
+            <li>None advert saved.</li>
         {% endfor %}
     </ul>
 

@@ -3,7 +3,7 @@
 {% extends "OCPlatformBundle::layout.html.twig" %}
 
 {% block title %}
-    Lecture d'une annonce - {{ parent() }}
+    Consulting advert - {{ parent() }}
 {% endblock %}
 
 {% block ocplatform_body %}
@@ -20,7 +20,7 @@
     </div>
 
     <h2>{{ advert.title }}</h2>
-    <i>Par {{ advert.author }}, le {{ advert.date|date('d/m/Y') }}</i>
+    <i>Published by {{ advert.author }}, on {{ advert.date|date('d/m/Y') }}</i>
 
     <div class="well">
         {{ advert.content }}
@@ -28,7 +28,7 @@
 
     {% if not advert.categories.empty %}
         <p>
-            Cette annonce est parue dans les catégories suivantes :
+            This advert has appeared in category :
             {% for category in advert.categories %}
                 {{ category.name }}{% if not loop.last %}, {% endif %}
             {% endfor %}
@@ -37,10 +37,10 @@
 
     {% if listAdvertSkills|length > 0 %}
         <div>
-            Cette annonce requiert les compétences suivantes :
+            Skills required for this advert are :
             <ul>
                 {% for advertSkill in listAdvertSkills %}
-                    <li>{{ advertSkill.skill.name }} : niveau {{ advertSkill.level }}</li>
+                    <li>{{ advertSkill.skill.name }} : level {{ advertSkill.level }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -49,15 +49,15 @@
     <p>
         <a href="{{ path('oc_platform_home') }}" class="btn btn-default">
             <i class="glyphicon glyphicon-chevron-left"></i>
-            Retour à la liste
+            Back to the list view
         </a>
         <a href="{{ path('oc_platform_edit', {'id': advert.id}) }}" class="btn btn-default">
             <i class="glyphicon glyphicon-edit"></i>
-            Modifier l'annonce
+            Edit the advert
         </a>
         <a href="{{ path('oc_platform_delete', {'id': advert.id}) }}" class="btn btn-danger">
             <i class="glyphicon glyphicon-trash"></i>
-            Supprimer l'annonce
+            Delete this advert
         </a>
     </p>
 

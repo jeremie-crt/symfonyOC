@@ -14,6 +14,7 @@ use OC\PlatformBundle\Entity\Application;
 use OC\PlatformBundle\Entity\Image;
 use OC\PlatformBundle\Form\AdvertEditType;
 use OC\PlatformBundle\Form\AdvertType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +25,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class AdvertController extends Controller
 {
@@ -82,12 +84,17 @@ class AdvertController extends Controller
 	}
 
 	/**
+	 * @Security("has_role('ROLE_USER')")
 	 * @param Request $request
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
 	 * @throws \Exception
 	 */
 	public function addAction(Request $request)
 	{
+		/*if (!$this->get('security.authorization_checker')->isGranted('ROLE_AUTHOR')) {
+			throw new AccessDeniedException('Access reserved to Author account.');
+		}*/
+
 		//Instancie l'objet pour le Form
 		$advert = new Advert();
 		$formBuilder = $this->get('form.factory')->create(AdvertType::class, $advert);

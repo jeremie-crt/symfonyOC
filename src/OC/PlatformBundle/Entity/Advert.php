@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use OC\PlatformBundle\Validator\Antiflood;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
@@ -15,6 +16,8 @@ use Symfony\Component\Validator\Context\ExecutionContextInterface;
  * @ORM\Table(name="oc_advert")
  * @ORM\Entity(repositoryClass="OC\PlatformBundle\Repository\AdvertRepository")
  * @ORM\HasLifecycleCallbacks()
+ *
+ * @UniqueEntity(fields="title", message="An advert already exits.")
  */
 class Advert
 {
@@ -58,7 +61,7 @@ class Advert
      * @var string
      * @ORM\Column(name="content", type="text")
      * @Assert\NotBlank()
-     * @Antiflood()
+     *
      */
     private $content;
 

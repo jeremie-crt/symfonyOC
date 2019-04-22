@@ -1,12 +1,12 @@
 {% extends "OCPlatformBundle::layout.html.twig" %}
 
 {% block title %}
-    Supprimer une annonce - {{ parent() }}
+    Delete an advert - {{ parent() }}
 {% endblock %}
 
 {% block ocplatform_body %}
 
-    <h2>Supprimer une annonce</h2>
+    <h2>Delete an advert</h2>
 
     <p>
         Really sure to delete this one "{{ advert.title }}" ?
@@ -16,7 +16,7 @@
     <form action="{{ path('oc_platform_delete', {'id': advert.id}) }}" method="post">
         <a href="{{ path('oc_platform_view', {'id': advert.id}) }}" class="btn btn-default">
             <i class="glyphicon glyphicon-chevron-left"></i>
-            Retour à l'annonce
+            Back to original advert
         </a>
         {# Ici j'ai écrit le bouton de soumission à la main #}
         <input type="submit" value="Supprimer" class="btn btn-danger" />
